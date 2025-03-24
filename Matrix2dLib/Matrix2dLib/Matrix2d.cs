@@ -74,7 +74,11 @@
             => new Matrix2d(left.a + right.a, left.b + right.b, 
                             left.c + right.c, left.d + right.d);
 
-        //Odpuszczamy sobie definiowanie operatora GetHashCode() - nie jest to konieczne w tym przypadku, bo nie będziemy korzystać z Dictornary ani HashSet
+        public static Matrix2d operator -(Matrix2d left, Matrix2d right)
+            => new Matrix2d(left.a - right.a, left.b - right.b,
+                            left.c - right.c, left.d - right.d);
+
+        //NA ZAJĘCIACH - Odpuszczamy sobie definiowanie operatora GetHashCode() - nie jest to konieczne w tym przypadku, bo nie będziemy korzystać z Dictornary ani HashSet
 
         //Teraz będziemy definiować operator mnożenia macierzy *
         public static Matrix2d operator *(Matrix2d left, Matrix2d right)
@@ -95,11 +99,19 @@
         public static Matrix2d operator *(Matrix2d macierz, int k)
             => k * macierz; //to jest wywołanie operatora * zdefiniowanego wyżej
 
+        public static Matrix2d operator -(Matrix2d macierz)
+            => -1 * macierz;
+
         //Teraz będziemy implementować transpozycję macierzy - Transpose(A) - zamieniamy wiersze na kolumny i kolumny na wiersze
         public static Matrix2d Transpoze(Matrix2d m) //static - oznacza że jest to metoda zdefiniowana na potrzeby klasy 
             => new Matrix2d(m.a, m.c, m.b, m.d);
 
         //Pomijamy krok 9 - funkcje obliczające wyznacznik macierzy 
+
+        public static int Determinant(Matrix2d m)
+            => m.a * m.d - m.b * m.c;
+
+        public int Det() => Determinant(this);
 
         //Krok 10 - implementacja rzutowania macierzy na tablicę regularną - int[2,2] 
 
@@ -108,5 +120,25 @@
 
         //powyżej konwerter, tworzy tablicę 2x2 i przypisuje wartości z macierzy m
 
+        public static Matrix2d Parse(string s)
+        {
+            try
+            {
+                var parts = s.Replace("[", "").Replace("]", "").Split(',');
+                if (parts.Length != 4)
+                    throw new FormatException();
+
+                int a = int.Parse(parts[0]);
+                int b = int.Parse(parts[1]);
+                int c = int.Parse(parts[2]);
+                int d = int.Parse(parts[3]);
+
+                return new Matrix2d(a, b, c, d);
+            }
+            catch
+            {
+                throw new FormatException();
+            }        
+        }
     }
 }
