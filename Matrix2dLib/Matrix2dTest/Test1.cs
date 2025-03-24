@@ -1,4 +1,6 @@
-﻿namespace Matrix2dTest
+﻿using Matrix2dLib;
+
+namespace Matrix2dTest
 {
     [TestClass]
     public sealed class Test1

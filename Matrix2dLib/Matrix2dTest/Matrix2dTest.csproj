@@ -12,4 +12,9 @@
     <TestingPlatformShowTestsFailure>true</TestingPlatformShowTestsFailure>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Matrix2dConsoleApp\Matrix2dConsoleApp.csproj" />
+    <ProjectReference Include="..\Matrix2dLib\Matrix2dLib.csproj" />
+  </ItemGroup>
+
 </Project>
