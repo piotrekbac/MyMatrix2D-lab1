@@ -207,7 +207,26 @@ namespace Matrix2dTests
             Assert.ThrowsException<FormatException>(() => Matrix2d.Parse(""));
         }
 
-        
+        [TestMethod]
+        public void TestMatrixMetodaParse_LiteryZamiastNumerow()
+        {
+            //Assert
+            Assert.ThrowsException<FormatException>(() => Matrix2d.Parse("[[a,b] , [c,d]]"));
+        }
+
+        [TestMethod]
+        public void TestMatrixMetodaParse_SpecjalneZnakiZamiastNumerow()
+        {
+            //Assert
+            Assert.ThrowsException<FormatException>(() => Matrix2d.Parse("[[!,@] , [#, $]]"));
+        }
+
+        [TestMethod]
+        public void TestMatrixMetodaParse_BrakujacePrzecinki()
+        {
+            //Assert
+            Assert.ThrowsException<FormatException>(() => Matrix2d.Parse("[[1 2] , [3 4]]"));
+        }
 
         //Testujemy czy macierz jest poprawnie porównywana z inną macierzą (w tym przypadku wypełnioną nullami) - testowanie metody Equals
         [TestMethod]

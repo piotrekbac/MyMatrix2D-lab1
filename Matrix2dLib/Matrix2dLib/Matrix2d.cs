@@ -83,11 +83,13 @@
             => new Matrix2d(left.a + right.a, left.b + right.b, 
                             left.c + right.c, left.d + right.d);
 
+        //Teraz będziemy definiować operator odejmowania macierzy -
         public static Matrix2d operator -(Matrix2d left, Matrix2d right)
             => new Matrix2d(left.a - right.a, left.b - right.b,
                             left.c - right.c, left.d - right.d);
 
-        //NA ZAJĘCIACH - Odpuszczamy sobie definiowanie operatora GetHashCode() - nie jest to konieczne w tym przypadku, bo nie będziemy korzystać z Dictornary ani HashSet
+        //NA ZAJĘCIACH - Odpuszczamy sobie definiowanie operatora GetHashCode() - nie jest to konieczne w tym przypadku, bo nie będziemy korzystać z Dictornary ani HashSet 
+        //JEDNAKŻE w dalszej części kodu definiujemy operator GetHashCode() - jest to zgodne z implementacją równości Equals, opiera się na krotce (Tuple) -> (a, b, c, d)
 
         //Teraz będziemy definiować operator mnożenia macierzy *
         public static Matrix2d operator *(Matrix2d left, Matrix2d right)
@@ -108,6 +110,7 @@
         public static Matrix2d operator *(Matrix2d macierz, int k)
             => k * macierz; //to jest wywołanie operatora * zdefiniowanego wyżej
 
+        //Teraz będziemy definiować operator mnożenia macierzy przez -1
         public static Matrix2d operator -(Matrix2d macierz)
             => -1 * macierz;
 
@@ -115,7 +118,6 @@
         public static Matrix2d Transpoze(Matrix2d m) //static - oznacza że jest to metoda zdefiniowana na potrzeby klasy 
             => new Matrix2d(m.a, m.c, m.b, m.d);
 
-        //Pomijamy krok 9 - funkcje obliczające wyznacznik macierzy 
 
         //Metoda obliczająca wyznacznik macierzy 
         public static int Determinant(Matrix2d m)

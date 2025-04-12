@@ -19,42 +19,42 @@ using Matrix2dLib;
 Console.WriteLine("------------------------------------------------------------------------------");
 Console.WriteLine();
 
-var idMatrix = Matrix2d.Id;
-var zeroMatrix = Matrix2d.Zero;
+var MatrixId = Matrix2d.Id;
+var MatrixZero = Matrix2d.Zero;
 
-Console.WriteLine("Identity Matrix:");
-Console.WriteLine(idMatrix);
+Console.WriteLine("Id naszego Matrixa:");
+Console.WriteLine(MatrixId);
 
-Console.WriteLine("Zero Matrix:");
-Console.WriteLine(zeroMatrix);
+Console.WriteLine("MatrixZero (czyli innymi słowy macierz z zawartością 0):");
+Console.WriteLine(MatrixZero);
 
-var m1 = new Matrix2d(1, 2, 3, 4);
-var m2 = new Matrix2d(2, 0, 1, 2);
+var macierz1 = new Matrix2d(1, 2, 3, 4);
+var macierz2 = new Matrix2d(2, 0, 1, 2);
 
-Console.WriteLine("Matrix m1:");
-Console.WriteLine(m1);
+Console.WriteLine("Oto wartość naszego matrix1:");
+Console.WriteLine(macierz1);
 
-Console.WriteLine("Matrix m2:");
-Console.WriteLine(m2);
+Console.WriteLine("Oto wartość naszego matrix2:");
+Console.WriteLine(macierz2);
 
-var sum = m1 + m2;
-Console.WriteLine("Sum of m1 and m2:");
-Console.WriteLine(sum);
+var sumaMacierzy = macierz1 + macierz2;
+Console.WriteLine("Suma matrix1 oraz matrix2");
+Console.WriteLine(sumaMacierzy);
 
-var product = m1 * m2;
-Console.WriteLine("Product of m1 and m2:");
-Console.WriteLine(product);
+var wynikMnozenia = macierz1 * macierz2;
+Console.WriteLine("WynikMnozenia matrix1 przez matrix2:");
+Console.WriteLine(wynikMnozenia);
 
-var transposed = Matrix2d.Transpoze(m1);
-Console.WriteLine("Transposed m1:");
-Console.WriteLine(transposed);
+var poTranspozycji = Matrix2d.Transpoze(macierz1);
+Console.WriteLine("Nasza macierz1 po tranposyzji prezentuje się w ten sposób:");
+Console.WriteLine(poTranspozycji);
 
-var determinant = m1.Det();
-Console.WriteLine($"Determinant of m1: {determinant}");
+var determinanta = macierz1.Det();
+Console.WriteLine($"Detereminantą naszej macierzy matrix1 jest: {determinanta}");
 
-var parsedMatrix = Matrix2d.Parse("[[1,2] , [3,4]]");
-Console.WriteLine("Parsed Matrix:");
-Console.WriteLine(parsedMatrix);
+var sparsowanyMatrix = Matrix2d.Parse("[[1,2] , [3,4]]");
+Console.WriteLine("Nasza macierz po sparsowaniu, prezentuje się następująco:");
+Console.WriteLine(sparsowanyMatrix);
 
 Console.WriteLine();
 Console.WriteLine("------------------------------------------------------------------------------");
