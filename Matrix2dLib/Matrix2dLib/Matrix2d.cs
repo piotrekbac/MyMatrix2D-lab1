@@ -89,7 +89,7 @@
                             left.c - right.c, left.d - right.d);
 
         //NA ZAJĘCIACH - Odpuszczamy sobie definiowanie operatora GetHashCode() - nie jest to konieczne w tym przypadku, bo nie będziemy korzystać z Dictornary ani HashSet 
-        //JEDNAKŻE w dalszej części kodu definiujemy operator GetHashCode() - jest to zgodne z implementacją równości Equals, opiera się na krotce (Tuple) -> (a, b, c, d)
+        //JEDNAKŻE w powyższej części kodu definiujemy operator GetHashCode() - jest to zgodne z implementacją równości Equals, opiera się na krotce (Tuple) -> (a, b, c, d)
 
         //Teraz będziemy definiować operator mnożenia macierzy *
         public static Matrix2d operator *(Matrix2d left, Matrix2d right)
@@ -147,7 +147,7 @@
                     !int.TryParse(parts[2], out int c) ||
                     !int.TryParse(parts[3], out int d))
                 {
-                    throw new FormatException("Pierwszy element nie jest liczbą całkowitą!");
+                    throw new FormatException("Wprowadzony element nie jest liczbą całkowitą!");
                 }              
                 return new Matrix2d(a, b, c, d);
             }
