@@ -5,7 +5,7 @@
     //immutable class - klasa niezmienna - nie można zmienić wartości pól tej klasy
     public class Matrix2d : IEquatable<Matrix2d>  //implementujemy interfejs IEquatable<Matrix2d> - to jest interfejs generyczny
     {
-        int a, b, c, d;         //private fields - prywatne pola 
+        private readonly int a, b, c, d;         //private fields - prywatne pola 
 
         /* 
               ---------
@@ -64,8 +64,11 @@
             //jeżeli a jest równe other.a i b jest równe other.b i c jest równe other.c i d jest równe other.d to zwracamy true
         }
 
+        //Przysłąniecie metody Equals(object)
         public override bool Equals(object obj)
             => obj is Matrix2d m && Equals(m);
+
+        //Metoda GetHashCode() - zgodna z implementacją równości Equals, opiera się na krotce (Tuple) -> (a, b, c, d)
         public override int GetHashCode()
             => (a, b, c, d).GetHashCode();
 
@@ -114,18 +117,20 @@
 
         //Pomijamy krok 9 - funkcje obliczające wyznacznik macierzy 
 
+        //Metoda obliczająca wyznacznik macierzy 
         public static int Determinant(Matrix2d m)
             => m.a * m.d - m.b * m.c;
 
+        //Wyznacznik macierzy - a konkretniej jego instancja
         public int Det() => Determinant(this);
 
-        //Krok 10 - implementacja rzutowania macierzy na tablicę regularną - int[2,2] 
-
+        //Implementacja rzutowania macierzy na tablicę regularną - int[2,2] 
         public static explicit operator int[,](Matrix2d m) 
             => new int[2, 2] { { m.a, m.b }, { m.c, m.d } };
 
         //powyżej konwerter, tworzy tablicę 2x2 i przypisuje wartości z macierzy m
 
+        //Metoda Parse, która zgłosi wyjątek FormatException jeżeli nie będzie można sparsować stringa na macierz 2x2
         public static Matrix2d Parse(string s)
         {
             try
@@ -134,13 +139,16 @@
                 if (parts.Length != 4)
                     throw new FormatException("Element musi zawierać dokładnie 4 elementy!");
 
-                int a = int.Parse(parts[0]);
-                int b = int.Parse(parts[1]);
-                int c = int.Parse(parts[2]);
-                int d = int.Parse(parts[3]);
-
+                if (int.TryParse(parts[0], out int a) ||
+                    int.TryParse(parts[1], out int b) ||
+                    int.TryParse(parts[2], out int c) ||
+                    int.TryParse(parts[3], out int d))
+                {
+                    throw new FormatException("Pierwszy element nie jest liczbą całkowitą!");
+                }              
                 return new Matrix2d(a, b, c, d);
             }
+
             catch
             {
                 throw new FormatException("Niewłaściwy format. Właściwym formatem jest: [[a,b] , [c,d]].");
