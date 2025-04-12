@@ -139,10 +139,11 @@
                 if (parts.Length != 4)
                     throw new FormatException("Element musi zawierać dokładnie 4 elementy!");
 
-                if (int.TryParse(parts[0], out int a) ||
-                    int.TryParse(parts[1], out int b) ||
-                    int.TryParse(parts[2], out int c) ||
-                    int.TryParse(parts[3], out int d))
+                if (
+                    !int.TryParse(parts[0], out int a) ||
+                    !int.TryParse(parts[1], out int b) ||
+                    !int.TryParse(parts[2], out int c) ||
+                    !int.TryParse(parts[3], out int d))
                 {
                     throw new FormatException("Pierwszy element nie jest liczbą całkowitą!");
                 }              
