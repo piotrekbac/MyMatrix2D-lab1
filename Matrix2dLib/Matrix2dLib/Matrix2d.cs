@@ -39,9 +39,9 @@
 
         //public const Matrix2d Id = new Matrix2d(1, 0, 0, 1); - nie jesteśmy w stanie przypisać wartości do pola const w ten sposób
 
-        public Matrix2d Id => new Matrix2d(1, 0, 0, 1);     //to jest właściwość - property typu get, to nie jest stała, property typu obliczeniowego
+        public static  Matrix2d Id => new Matrix2d(1, 0, 0, 1);     //to jest właściwość - property typu get, to nie jest stała, property typu obliczeniowego
 
-        public Matrix2d Zero => new Matrix2d(0, 0, 0, 0);   //to jest właściwość - property typu get, to nie jest stała, property typu obliczeniowego
+        public static  Matrix2d Zero => new Matrix2d(0, 0, 0, 0);   //to jest właściwość - property typu get, to nie jest stała, property typu obliczeniowego
 
         //Matrix2d jest niezminniczą zmienną - immutable - nie można zmienić wartości pól tej klasy
 
@@ -63,6 +63,12 @@
 
             //jeżeli a jest równe other.a i b jest równe other.b i c jest równe other.c i d jest równe other.d to zwracamy true
         }
+
+        public override bool Equals(object obj)
+            => obj is Matrix2d m && Equals(m);
+        public override int GetHashCode()
+            => (a, b, c, d).GetHashCode();
+
 
         //Teraz będziemy definiować operator ==
         public static bool operator ==(Matrix2d left, Matrix2d right) => left.Equals(right);
@@ -126,7 +132,7 @@
             {
                 var parts = s.Replace("[", "").Replace("]", "").Split(',');
                 if (parts.Length != 4)
-                    throw new FormatException();
+                    throw new FormatException("Element musi zawierać dokładnie 4 elementy!");
 
                 int a = int.Parse(parts[0]);
                 int b = int.Parse(parts[1]);
@@ -137,7 +143,7 @@
             }
             catch
             {
-                throw new FormatException();
+                throw new FormatException("Niewłaściwy format. Właściwym formatem jest: [[a,b] , [c,d]].");
             }        
         }
     }

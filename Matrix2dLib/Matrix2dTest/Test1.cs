@@ -1,13 +1,12 @@
-﻿using Matrix2dLib;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Matrix2dLib;
+using System;
 
-namespace Matrix2dTest
+namespace Matrix2dTests
 {
     [TestClass]
-    public sealed class Test1
+    public class Matrix2dTests
     {
-        [TestMethod]
-        public void TestMethod1()
-        {
-        }
+        
     }
 }

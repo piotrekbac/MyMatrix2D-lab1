@@ -14,8 +14,10 @@ using Matrix2dLib;
 
 //var m3 = (int[,])m2;
 
-Console.WriteLine("------------------------------------------------------------------------------");
+//Powyższą część kodu realizowaliśmy na labolatoriach - w ramach przykładu
 
+Console.WriteLine("------------------------------------------------------------------------------");
+Console.WriteLine();
 
 var idMatrix = Matrix2d.Id;
 var zeroMatrix = Matrix2d.Zero;
@@ -53,3 +55,6 @@ Console.WriteLine($"Determinant of m1: {determinant}");
 var parsedMatrix = Matrix2d.Parse("[[1,2] , [3,4]]");
 Console.WriteLine("Parsed Matrix:");
 Console.WriteLine(parsedMatrix);
+
+Console.WriteLine();
+Console.WriteLine("------------------------------------------------------------------------------");
